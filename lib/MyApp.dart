@@ -67,8 +67,9 @@ class _WelcomePageState extends State<WelcomePage> {
               children: [
                 middlepaneldata(), // The main scrollable content
                 SizedBox(
-                  height:
-                      80, // Add extra space at the bottom for the bottom container
+                  height: 80 *
+                      SizeConfig
+                          .blockSizeVertical, // Add extra space at the bottom for the bottom container
                 ),
               ],
             ),
@@ -141,7 +142,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(height: 3),
+                    SizedBox(height: 2),
                     IgnorePointer(
                       child: _buildDeviceBlock(
                         Icons.home_outlined,
@@ -150,15 +151,15 @@ class _WelcomePageState extends State<WelcomePage> {
                       ),
                     ),
                     Container(
-                      height: 4,
-                      width: 4,
+                      height: 2,
+                      width: 2,
                       decoration: BoxDecoration(
                         color: Color.fromARGB(
                             209, 220, 65, 91), // Pink dot for Home
                         borderRadius: BorderRadius.circular(2),
                       ),
                     ),
-                    SizedBox(height: 2),
+                    SizedBox(height: 1),
                   ],
                 ),
               ),
@@ -174,7 +175,6 @@ class _WelcomePageState extends State<WelcomePage> {
                     'assets/discount.svg',
                     height: 25 * SizeConfig.blockSizeVertical,
                     color: Colors.black87,
-                    width: 0.5,
                   ),
                   // SvgPicture.asset(
                   //   assetPath,
@@ -310,9 +310,12 @@ class _WelcomePageState extends State<WelcomePage> {
 
   Widget Profileimage() {
     return Container(
-      margin: EdgeInsets.only(left: 40 * SizeConfig.blockSizeHorizontal),
-      padding: EdgeInsets.only(left: 10, bottom: 10),
+      margin: EdgeInsets.only(left: 25 * SizeConfig.blockSizeHorizontal),
+      padding: EdgeInsets.only(
+          left: 10 * SizeConfig.blockSizeHorizontal,
+          bottom: 10 * SizeConfig.blockSizeVertical),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // CircleAvatar with image
           Center(
@@ -373,11 +376,11 @@ class _WelcomePageState extends State<WelcomePage> {
           right: -6 *
               SizeConfig
                   .blockSizeVertical, // Moves the image further right, outside the container
-          top: -120, // Moves the image upward, outside the container
+          top: -110, // Moves the image upward, outside the container
           child: Image.asset(
             'assets/nannybaby.png', // Ensure you use the correct path to the image asset
             height: 350, // Larger than the container height
-            width: 320, // Adjust width as per your requirement
+            width: 350, // Adjust width as per your requirement
             fit: BoxFit.contain,
           ),
         ),
@@ -390,7 +393,7 @@ class _WelcomePageState extends State<WelcomePage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Space from the top
-        SizedBox(height: 28 * SizeConfig.blockSizeVertical),
+        SizedBox(height: 50 * SizeConfig.blockSizeVertical),
         menuicon(),
         Profileimage(),
 
@@ -402,9 +405,9 @@ class _WelcomePageState extends State<WelcomePage> {
 
         // New text with specific padding and width
         Container(
-          margin: EdgeInsets.only(left: 85 * SizeConfig.blockSizeHorizontal),
-          // padding:
-          //     EdgeInsets.only(left: 10), // Match left padding with the image
+          margin: EdgeInsets.only(left: 25 * SizeConfig.blockSizeHorizontal),
+          padding:
+              EdgeInsets.only(left: 10), // Match left padding with the image
           child: Text(
             'Your Current Booking',
             style: TextStyle(
@@ -426,7 +429,7 @@ class _WelcomePageState extends State<WelcomePage> {
 
         // New text with specific padding and width
         Container(
-          margin: EdgeInsets.only(left: 85 * SizeConfig.blockSizeHorizontal),
+          margin: EdgeInsets.only(left: 25 * SizeConfig.blockSizeHorizontal),
           // padding:
           //     EdgeInsets.only(left: 10), // Match left padding with the image
           child: Text(
@@ -945,11 +948,11 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget Booknow() {
     return Container(
       margin: EdgeInsets.only(
-        left: 80 * SizeConfig.blockSizeHorizontal,
-        right: 80 * SizeConfig.blockSizeHorizontal,
+        left: 30 * SizeConfig.blockSizeHorizontal,
+        right: 30 * SizeConfig.blockSizeHorizontal,
       ),
       padding: EdgeInsets.only(
-          left: 20, top: 22), // Added padding for internal spacing
+          left: 25, top: 22), // Added padding for internal spacing
       height: 155 * SizeConfig.blockSizeVertical,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
@@ -1020,8 +1023,8 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget currentbooking() {
     return Container(
         margin: EdgeInsets.only(
-            left: 80 * SizeConfig.blockSizeHorizontal,
-            right: 80 * SizeConfig.blockSizeHorizontal),
+            left: 25 * SizeConfig.blockSizeHorizontal,
+            right: 20 * SizeConfig.blockSizeHorizontal),
         padding: EdgeInsets.only(left: 10),
         height: 160 * SizeConfig.blockSizeVertical,
         width: MediaQuery.of(context).size.width,
@@ -1043,13 +1046,11 @@ class _WelcomePageState extends State<WelcomePage> {
               height: 10 * SizeConfig.blockSizeVertical,
             ),
             Container(
-              margin: EdgeInsets.only(
-                  //  left: 10 * SizeConfig.blockSizeHorizontal,
-                  right: 30 * SizeConfig.blockSizeHorizontal),
+              margin:
+                  EdgeInsets.only(right: 10 * SizeConfig.blockSizeHorizontal),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // Text aligned to the left
                   Text(
                     'One Day Package',
                     style: TextStyle(
@@ -1060,18 +1061,15 @@ class _WelcomePageState extends State<WelcomePage> {
                     ),
                   ),
                   Container(
-                    //  padding: EdgeInsets.symmetric(vertical: 8),
-                    child: Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 2.2),
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(209, 220, 65, 91),
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Text(
-                        'Start',
-                        style: TextStyle(color: Colors.white, fontSize: 10),
-                      ),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 22, vertical: 2.2),
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(209, 220, 65, 91),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Text(
+                      'Start',
+                      style: TextStyle(color: Colors.white, fontSize: 10),
                     ),
                   ),
                 ],
@@ -1202,19 +1200,15 @@ class _WelcomePageState extends State<WelcomePage> {
             ),
             SizedBox(height: 14 * SizeConfig.blockSizeVertical), //
             Row(
-              //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment:
+                  MainAxisAlignment.spaceAround, // Evenly spaces the containers
               children: [
                 // First section
                 Container(
                   height: 22 * SizeConfig.blockSizeVertical,
-                  width: 200 * SizeConfig.blockSizeHorizontal,
+                  width: 65 * SizeConfig.blockSizeHorizontal, // Adjusted size
                   decoration: BoxDecoration(
-                    color: Color.fromRGBO(
-                      9,
-                      9,
-                      56,
-                      0.9,
-                    ),
+                    color: Color.fromRGBO(9, 9, 56, 0.9),
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: Row(
@@ -1222,39 +1216,30 @@ class _WelcomePageState extends State<WelcomePage> {
                     children: [
                       Icon(Icons.star_border_outlined,
                           color: Colors.white,
-                          size: 15 * SizeConfig.blockSizeVertical),
+                          size: 12 * SizeConfig.blockSizeVertical),
                       SizedBox(
-                          width: 8 *
+                          width: 2 *
                               SizeConfig
-                                  .blockSizeHorizontal), // Spacing between icon and text
+                                  .blockSizeHorizontal), // Reduced spacing for better alignment
                       Text(
                         "Rate Us",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 12 * SizeConfig.blockSizeVertical,
+                          fontSize: 10 *
+                              SizeConfig
+                                  .blockSizeVertical, // Adjusted font size
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      //  SizedBox(height: 5 * SizeConfig.blockSizeVertical), //
                     ],
                   ),
                 ),
-                Spacer(),
-                // SizedBox(
-                //     width: 30 *
-                //         SizeConfig
-                //             .blockSizeHorizontal), // Space between sections
                 // Second section
                 Container(
-                  height: 25 * SizeConfig.blockSizeVertical,
-                  width: 260 * SizeConfig.blockSizeHorizontal,
+                  height: 22 * SizeConfig.blockSizeVertical,
+                  width: 75 * SizeConfig.blockSizeHorizontal,
                   decoration: BoxDecoration(
-                    color: Color.fromRGBO(
-                      9,
-                      9,
-                      56,
-                      0.9,
-                    ),
+                    color: Color.fromRGBO(9, 9, 56, 0.9),
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: Row(
@@ -1262,38 +1247,28 @@ class _WelcomePageState extends State<WelcomePage> {
                     children: [
                       SvgPicture.asset(
                         'assets/scheduler_location.svg',
-                        height: 15 * SizeConfig.blockSizeVertical,
+                        height: 12 * SizeConfig.blockSizeVertical,
                         color: Colors.white,
                       ),
-                      SizedBox(
-                          width: 8 *
-                              SizeConfig
-                                  .blockSizeHorizontal), // Spacing between icon and text
                       Text(
                         "Geolocation",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 12 * SizeConfig.blockSizeVertical,
+                          fontSize: 10 *
+                              SizeConfig
+                                  .blockSizeVertical, // Adjusted font size
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      //  SizedBox(height: 5 * SizeConfig.blockSizeVertical), //
                     ],
                   ),
                 ),
-                Spacer(),
-                // SizedBox(width: 10 * SizeConfig.blockSizeHorizontal),
                 // Third section
                 Container(
-                  height: 25 * SizeConfig.blockSizeVertical,
-                  width: 260 * SizeConfig.blockSizeHorizontal,
+                  height: 22 * SizeConfig.blockSizeVertical,
+                  width: 75 * SizeConfig.blockSizeHorizontal,
                   decoration: BoxDecoration(
-                    color: Color.fromRGBO(
-                      9,
-                      9,
-                      56,
-                      0.9,
-                    ),
+                    color: Color.fromRGBO(9, 9, 56, 0.9),
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: Row(
@@ -1301,26 +1276,20 @@ class _WelcomePageState extends State<WelcomePage> {
                     children: [
                       Icon(Icons.mic_none,
                           color: Colors.white,
-                          size: 15 * SizeConfig.blockSizeVertical),
-                      SizedBox(
-                          width: 5 *
-                              SizeConfig
-                                  .blockSizeHorizontal), // Spacing between icon and text
+                          size: 12 * SizeConfig.blockSizeVertical),
                       Text(
-                        "survillence",
+                        "Surveillance",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 12 * SizeConfig.blockSizeVertical,
+                          fontSize: 10 *
+                              SizeConfig
+                                  .blockSizeVertical, // Adjusted font size
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(
-                    width: 15 *
-                        SizeConfig
-                            .blockSizeHorizontal), // Spacing between icon and text
               ],
             )
           ],

@@ -157,7 +157,7 @@ class _WelcomePageState extends State<NextPage> {
 
   Widget RightsideContainer() {
     return Container(
-        height: 550,
+        height: 580 * SizeConfig.blockSizeVertical,
         decoration: BoxDecoration(
           color: Color.fromRGBO(243, 243, 217, 1), // Card background color
           borderRadius: BorderRadius.only(
@@ -174,15 +174,14 @@ class _WelcomePageState extends State<NextPage> {
             ),
           ],
         ),
-        child: Column(
-          children: [Rightsidedata(), bottomnavbar()],
-        ));
+        child: Column(children: [Rightsidedata(), bottomnavbar()]));
   }
 
   Widget Rightsidedata() {
     return Padding(
       padding: const EdgeInsets.only(left: 25.0, top: 30), //
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Profilecontainer(),
           SizedBox(height: 20 * SizeConfig.blockSizeVertical),
@@ -214,10 +213,7 @@ class _WelcomePageState extends State<NextPage> {
 
           SizedBox(height: 15 * SizeConfig.blockSizeVertical),
           Container(
-            margin:
-                EdgeInsets.only(right: 150 * SizeConfig.blockSizeHorizontal),
-            // padding:
-            //     EdgeInsets.only(left: 10), // Match left padding with the image
+            alignment: Alignment.topLeft,
             child: Text(
               'Packages',
               style: TextStyle(
@@ -232,7 +228,7 @@ class _WelcomePageState extends State<NextPage> {
               ),
             ),
           ),
-          SizedBox(height: 15 * SizeConfig.blockSizeVertical),
+          SizedBox(height: 12 * SizeConfig.blockSizeVertical),
           currentbooking(),
           SizedBox(height: 12 * SizeConfig.blockSizeVertical),
           //  stackcontainer(),
@@ -303,11 +299,12 @@ class _WelcomePageState extends State<NextPage> {
                   color: Colors.black54,
                   width: 0.5,
                 ),
+                SizedBox(height: 5 * SizeConfig.blockSizeVertical),
                 Text(
                   'Packages',
                   style: TextStyle(
                       color: Colors.black87,
-                      fontSize: 11 * SizeConfig.blockSizeVertical),
+                      fontSize: 8 * SizeConfig.blockSizeVertical),
                 ),
               ],
             )),
@@ -319,7 +316,7 @@ class _WelcomePageState extends State<NextPage> {
 
   Widget getpackagedetails() {
     return Container(
-        height: 60,
+        height: 65,
         decoration: BoxDecoration(
           color: Color.fromRGBO(243, 243, 217, 1), // Card background color
           borderRadius: BorderRadius.only(
@@ -342,7 +339,7 @@ class _WelcomePageState extends State<NextPage> {
             SizedBox(height: 6 * SizeConfig.blockSizeVertical),
             Container(
                 margin:
-                    EdgeInsets.only(left: 20 * SizeConfig.blockSizeHorizontal),
+                    EdgeInsets.only(left: 10 * SizeConfig.blockSizeHorizontal),
                 child: Text(
                   "Overnight Package ",
                   style: TextStyle(
@@ -354,7 +351,7 @@ class _WelcomePageState extends State<NextPage> {
             SizedBox(height: 10 * SizeConfig.blockSizeVertical),
             Container(
                 margin:
-                    EdgeInsets.only(left: 20 * SizeConfig.blockSizeHorizontal),
+                    EdgeInsets.only(left: 10 * SizeConfig.blockSizeHorizontal),
                 child: Text(
                   "From ",
                   style: TextStyle(
@@ -366,7 +363,7 @@ class _WelcomePageState extends State<NextPage> {
             SizedBox(height: 5 * SizeConfig.blockSizeVertical),
             Container(
               margin:
-                  EdgeInsets.only(left: 20 * SizeConfig.blockSizeHorizontal),
+                  EdgeInsets.only(left: 10 * SizeConfig.blockSizeHorizontal),
               child: Row(
                 children: [
                   Icon(
@@ -384,7 +381,7 @@ class _WelcomePageState extends State<NextPage> {
                       fontSize: 10 * SizeConfig.blockSizeVertical,
                     ),
                   ),
-                  SizedBox(width: 60 * SizeConfig.blockSizeHorizontal),
+                  SizedBox(width: 5 * SizeConfig.blockSizeHorizontal),
                   Icon(Icons.timer_outlined,
                       color: Color.fromARGB(209, 220, 65, 91),
                       size: 8), // Timer icon
@@ -395,8 +392,8 @@ class _WelcomePageState extends State<NextPage> {
                   Text(
                     '11 pm',
                     style: TextStyle(
-                      fontSize: 10 * SizeConfig.blockSizeVertical,
-                    ),
+                        fontSize: 10 * SizeConfig.blockSizeVertical,
+                        letterSpacing: -0.5),
                   ),
                 ],
               ),
@@ -407,7 +404,7 @@ class _WelcomePageState extends State<NextPage> {
 
   Widget currentbooking() {
     return Container(
-        height: 90,
+        height: 80,
         decoration: BoxDecoration(
           color: Color.fromRGBO(255, 156, 157, 1), // background color
           borderRadius: BorderRadius.only(
@@ -427,10 +424,10 @@ class _WelcomePageState extends State<NextPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 12 * SizeConfig.blockSizeVertical),
+            SizedBox(height: 8 * SizeConfig.blockSizeVertical),
             Container(
-                margin:
-                    EdgeInsets.only(left: 20 * SizeConfig.blockSizeHorizontal),
+                padding:
+                    EdgeInsets.only(left: 15 * SizeConfig.blockSizeHorizontal),
                 child: Stack(
                   alignment: Alignment
                       .center, // Aligns both the text and icon at the center
@@ -442,11 +439,11 @@ class _WelcomePageState extends State<NextPage> {
                     ),
                     Positioned(
                       top:
-                          8, // Adjust this value to control the vertical position of "01"
+                          10, // Adjust this value to control the vertical position of "01"
                       child: Text(
                         "01",
                         style: TextStyle(
-                          fontSize: 10 *
+                          fontSize: 8 *
                               SizeConfig
                                   .blockSizeVertical, // Adjust font size as needed
                           fontWeight: FontWeight.bold,
@@ -457,10 +454,10 @@ class _WelcomePageState extends State<NextPage> {
                     ),
                   ],
                 )), // Cal),
-            SizedBox(height: 12 * SizeConfig.blockSizeVertical),
+            SizedBox(height: 10 * SizeConfig.blockSizeVertical),
             Container(
                 margin:
-                    EdgeInsets.only(left: 20 * SizeConfig.blockSizeHorizontal),
+                    EdgeInsets.only(left: 12 * SizeConfig.blockSizeHorizontal),
                 child: Text(
                   "One Day Packages ",
                   style: TextStyle(
@@ -469,18 +466,18 @@ class _WelcomePageState extends State<NextPage> {
                     fontWeight: FontWeight.w500,
                   ),
                 )),
-            SizedBox(height: 5 * SizeConfig.blockSizeVertical),
+            SizedBox(height: 3 * SizeConfig.blockSizeVertical),
             Container(
               margin:
-                  EdgeInsets.only(left: 20 * SizeConfig.blockSizeHorizontal),
+                  EdgeInsets.only(left: 12 * SizeConfig.blockSizeHorizontal),
               child: Row(
                 children: [
                   //ace between icon and date
                   Text(
                     'Lorem ipsum dolor sit ame',
                     style: TextStyle(
-                      fontSize: 10 * SizeConfig.blockSizeVertical,
-                    ),
+                        fontSize: 9.5 * SizeConfig.blockSizeVertical,
+                        letterSpacing: -0.5),
                   ),
                 ],
               ),
@@ -510,10 +507,10 @@ class _WelcomePageState extends State<NextPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 12 * SizeConfig.blockSizeVertical),
+            SizedBox(height: 8 * SizeConfig.blockSizeVertical),
             Container(
                 margin:
-                    EdgeInsets.only(left: 20 * SizeConfig.blockSizeHorizontal),
+                    EdgeInsets.only(left: 15 * SizeConfig.blockSizeHorizontal),
                 child: Stack(
                   alignment: Alignment
                       .center, // Aligns both the text and icon at the center
@@ -525,11 +522,11 @@ class _WelcomePageState extends State<NextPage> {
                     ),
                     Positioned(
                       top:
-                          8, // Adjust this value to control the vertical position of "01"
+                          10, // Adjust this value to control the vertical position of "01"
                       child: Text(
                         "03",
                         style: TextStyle(
-                          fontSize: 10 *
+                          fontSize: 8 *
                               SizeConfig
                                   .blockSizeVertical, // Adjust font size as needed
                           fontWeight: FontWeight.bold,
@@ -540,30 +537,30 @@ class _WelcomePageState extends State<NextPage> {
                     ),
                   ],
                 )), // Cal),
-            SizedBox(height: 12 * SizeConfig.blockSizeVertical),
+            SizedBox(height: 8 * SizeConfig.blockSizeVertical),
             Container(
                 margin:
-                    EdgeInsets.only(left: 20 * SizeConfig.blockSizeHorizontal),
+                    EdgeInsets.only(left: 12 * SizeConfig.blockSizeHorizontal),
                 child: Text(
                   "One Day Packages ",
                   style: TextStyle(
-                    //  color: Color.fromARGB(255, 245, 109, 132),
-                    fontSize: 9, // Font size
-                    fontWeight: FontWeight.w500,
-                  ),
+                      //  color: Color.fromARGB(255, 245, 109, 132),
+                      fontSize: 9, // Font size
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: -0.3),
                 )),
-            SizedBox(height: 5 * SizeConfig.blockSizeVertical),
+            SizedBox(height: 3 * SizeConfig.blockSizeVertical),
             Container(
               margin:
-                  EdgeInsets.only(left: 20 * SizeConfig.blockSizeHorizontal),
+                  EdgeInsets.only(left: 12 * SizeConfig.blockSizeHorizontal),
               child: Row(
                 children: [
                   //ace between icon and date
                   Text(
                     'Lorem ipsum dolor sit ame',
                     style: TextStyle(
-                      fontSize: 10 * SizeConfig.blockSizeVertical,
-                    ),
+                        fontSize: 9.5 * SizeConfig.blockSizeVertical,
+                        letterSpacing: -0.5),
                   ),
                 ],
               ),
@@ -673,7 +670,7 @@ class _WelcomePageState extends State<NextPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        SizedBox(height: 0),
+        SizedBox(height: 1),
         Icon(
           assetPath, // Replace with your specific icon
           size: 30 * SizeConfig.blockSizeVertical,
@@ -682,7 +679,7 @@ class _WelcomePageState extends State<NextPage> {
         Text(
           label,
           style: TextStyle(
-              color: colors, fontSize: 11 * SizeConfig.blockSizeVertical),
+              color: colors, fontSize: 8 * SizeConfig.blockSizeVertical),
         ),
       ],
     );
