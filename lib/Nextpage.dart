@@ -241,8 +241,8 @@ class _WelcomePageState extends State<NextPage> {
 
   Widget bottomnavbar() {
     return Container(
-      height: 61 * SizeConfig.blockSizeVertical,
-      padding: EdgeInsets.only(left: 25),
+      height: 62 * SizeConfig.blockSizeVertical,
+      padding: EdgeInsets.only(left: 25 * SizeConfig.blockSizeHorizontal),
       decoration: BoxDecoration(
         color: Color.fromRGBO(243, 243, 217, 1), // Card background color
         borderRadius: BorderRadius.only(
@@ -281,18 +281,18 @@ class _WelcomePageState extends State<NextPage> {
                     borderRadius: BorderRadius.circular(2),
                   ),
                 ),
-                SizedBox(height: 2),
+                SizedBox(height: 2 * SizeConfig.blockSizeVertical),
               ],
             ),
           ),
-          SizedBox(height: 1),
+          SizedBox(height: 1 * SizeConfig.blockSizeVertical),
           Expanded(
             child: IgnorePointer(
                 child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(height: 1),
+                SizedBox(height: 1 * SizeConfig.blockSizeVertical),
                 SvgPicture.asset(
                   'assets/discount.svg',
                   height: 25 * SizeConfig.blockSizeVertical,

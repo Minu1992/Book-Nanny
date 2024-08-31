@@ -118,7 +118,7 @@ class _WelcomePageState extends State<WelcomePage> {
       left: 0,
       right: 0,
       child: Container(
-        height: 50,
+        height: 50 * SizeConfig.blockSizeVertical,
         decoration: BoxDecoration(
           color: Color.fromRGBO(247, 247, 217, 1), //
 
