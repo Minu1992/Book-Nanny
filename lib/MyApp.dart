@@ -50,7 +50,7 @@ class _WelcomePageState extends State<WelcomePage> {
         return true;
       },
       child: Scaffold(
-          backgroundColor: Color.fromRGBO(243, 243, 217, 1),
+          backgroundColor: Colors.white,
           resizeToAvoidBottomInset: true,
           body: Stack(children: [scrollingwift(), Bottmnavbar()])),
     );
@@ -118,9 +118,10 @@ class _WelcomePageState extends State<WelcomePage> {
       left: 0,
       right: 0,
       child: Container(
-        height: 50 * SizeConfig.blockSizeVertical,
+        height: 55 * SizeConfig.blockSizeVertical,
         decoration: BoxDecoration(
-          color: Color.fromRGBO(247, 247, 217, 1), //
+          color: Colors.white,
+          //
 
           boxShadow: [
             BoxShadow(
@@ -142,7 +143,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(height: 2),
+                    //SizedBox(height: 2),
                     IgnorePointer(
                       child: _buildDeviceBlock(
                         Icons.home_outlined,
@@ -151,8 +152,8 @@ class _WelcomePageState extends State<WelcomePage> {
                       ),
                     ),
                     Container(
-                      height: 2,
-                      width: 2,
+                      height: 2 * SizeConfig.blockSizeVertical,
+                      width: 2 * SizeConfig.blockSizeHorizontal,
                       decoration: BoxDecoration(
                         color: Color.fromARGB(
                             209, 220, 65, 91), // Pink dot for Home
@@ -393,7 +394,7 @@ class _WelcomePageState extends State<WelcomePage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Space from the top
-        SizedBox(height: 50 * SizeConfig.blockSizeVertical),
+        SizedBox(height: 70 * SizeConfig.blockSizeVertical),
         menuicon(),
         Profileimage(),
 
@@ -406,8 +407,10 @@ class _WelcomePageState extends State<WelcomePage> {
         // New text with specific padding and width
         Container(
           margin: EdgeInsets.only(left: 25 * SizeConfig.blockSizeHorizontal),
-          padding:
-              EdgeInsets.only(left: 10), // Match left padding with the image
+          padding: EdgeInsets.only(
+              left: 10 *
+                  SizeConfig
+                      .blockSizeHorizontal), // Match left padding with the image
           child: Text(
             'Your Current Booking',
             style: TextStyle(
@@ -417,7 +420,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 56,
                 0.9,
               ),
-              fontSize: 14, // Font size
+              fontSize: 16 * SizeConfig.blockSizeVertical, // Font size
               fontWeight: FontWeight.w800,
             ),
           ),
@@ -441,7 +444,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 56,
                 0.9,
               ),
-              fontSize: 18 * SizeConfig.blockSizeVertical, // Font size
+              fontSize: 16 * SizeConfig.blockSizeVertical, // Font size
               fontWeight: FontWeight.w800,
             ),
           ),
@@ -456,9 +459,9 @@ class _WelcomePageState extends State<WelcomePage> {
   // Color.fromRGBO(75, 132, 170, 0.8),
   Widget getpackagedetails() {
     List<Color> cardcolor = [
-      Color.fromRGBO(255, 156, 157, 1),
+      Color.fromRGBO(246, 169, 191, 01), //
       Color.fromRGBO(75, 132, 170, 0.8),
-      Color.fromRGBO(255, 156, 157, 1),
+      Color.fromRGBO(246, 169, 191, 01), //
       Color.fromRGBO(75, 132, 170, 0.8),
     ];
 
@@ -497,7 +500,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         children: [
                           Icon(
                             Icons.calendar_today_outlined,
-                            color: Color.fromARGB(209, 220, 65, 91),
+                            color: Color.fromRGBO(236, 124, 161, 1),
                             size: 30 * SizeConfig.blockSizeVertical,
                           ),
                           Positioned(
@@ -511,7 +514,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                         .blockSizeVertical, // Adjust font size as needed
                                 fontWeight: FontWeight.bold,
                                 letterSpacing: -0.8,
-                                color: Color.fromARGB(209, 220, 65, 91),
+                                color: Color.fromRGBO(236, 124, 161, 1),
                               ),
                             ),
                           ),
@@ -525,7 +528,7 @@ class _WelcomePageState extends State<WelcomePage> {
                           padding: EdgeInsets.symmetric(
                               horizontal: 9, vertical: 2.2),
                           decoration: BoxDecoration(
-                            color: Color.fromARGB(209, 220, 65, 91),
+                            color: Color.fromRGBO(236, 124, 161, 1),
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: Text(
@@ -721,7 +724,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         children: [
                           Icon(
                             Icons.calendar_today_outlined,
-                            color: Color.fromARGB(209, 220, 65, 91),
+                            color: Color.fromRGBO(236, 124, 161, 1),
                             size: 30 * SizeConfig.blockSizeVertical,
                           ),
                           Positioned(
@@ -735,7 +738,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                     SizeConfig
                                         .blockSizeVertical, // Adjust font size as needed
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(209, 220, 65, 91),
+                                color: Color.fromRGBO(236, 124, 161, 1),
                               ),
                             ),
                           ),
@@ -749,7 +752,7 @@ class _WelcomePageState extends State<WelcomePage> {
                           padding: EdgeInsets.symmetric(
                               horizontal: 9, vertical: 2.2),
                           decoration: BoxDecoration(
-                            color: Color.fromARGB(209, 220, 65, 91),
+                            color: Color.fromRGBO(236, 124, 161, 1),
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: Text(
@@ -933,8 +936,7 @@ class _WelcomePageState extends State<WelcomePage> {
       height: 155 * SizeConfig.blockSizeVertical,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        color: Color.fromRGBO(255, 156, 157, 1),
-        //  color: Color(0x#FFB3DE),
+        color: Color.fromRGBO(246, 169, 191, 01), //  color: Color(0x#FFB3DE),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
@@ -1006,7 +1008,7 @@ class _WelcomePageState extends State<WelcomePage> {
         height: 160 * SizeConfig.blockSizeVertical,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          color: Color.fromRGBO(247, 247, 217, 1), //
+          color: Colors.white, //
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
@@ -1034,14 +1036,14 @@ class _WelcomePageState extends State<WelcomePage> {
                       fontSize: 14 * SizeConfig.blockSizeVertical, // Font size
                       fontWeight: FontWeight.w700,
                       letterSpacing: -0.2,
-                      color: Color.fromARGB(209, 220, 65, 91),
+                      color: Color.fromRGBO(236, 124, 161, 1),
                     ),
                   ),
                   Container(
                     padding:
                         EdgeInsets.symmetric(horizontal: 22, vertical: 2.2),
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(209, 220, 65, 91),
+                      color: Color.fromRGBO(236, 124, 161, 1),
                       borderRadius: BorderRadius.circular(30),
                     ),
                     child: Text(
@@ -1074,7 +1076,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       children: [
                         Icon(
                           Icons.calendar_month_outlined,
-                          color: Color.fromARGB(209, 220, 65, 91),
+                          color: Color.fromRGBO(236, 124, 161, 1),
                           size: 13 * SizeConfig.blockSizeVertical,
                         ), // Calendar icon
                         SizedBox(

@@ -30,7 +30,7 @@ class _WelcomePageState extends State<NextPage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Color.fromRGBO(243, 243, 217, 1),
+      backgroundColor: Colors.white,
       resizeToAvoidBottomInset: true,
       body: Row(
         children: [
@@ -159,7 +159,7 @@ class _WelcomePageState extends State<NextPage> {
     return Container(
         height: 580 * SizeConfig.blockSizeVertical,
         decoration: BoxDecoration(
-          color: Color.fromRGBO(243, 243, 217, 1), // Card background color
+          color: Colors.white, // Card background color
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(15.0),
             bottomLeft: Radius.circular(15.0),
@@ -244,7 +244,7 @@ class _WelcomePageState extends State<NextPage> {
       height: 62 * SizeConfig.blockSizeVertical,
       padding: EdgeInsets.only(left: 25 * SizeConfig.blockSizeHorizontal),
       decoration: BoxDecoration(
-        color: Color.fromRGBO(243, 243, 217, 1), // Card background color
+        color: Colors.white, // Card background color
         borderRadius: BorderRadius.only(
           //  topLeft: Radius.circular(6.0),
           bottomLeft: Radius.circular(12.0),
@@ -318,7 +318,7 @@ class _WelcomePageState extends State<NextPage> {
     return Container(
         height: 65,
         decoration: BoxDecoration(
-          color: Color.fromRGBO(243, 243, 217, 1), // Card background color
+          color: Colors.white, // Card background color
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(6.0),
             bottomLeft: Radius.circular(6.0),
@@ -406,7 +406,9 @@ class _WelcomePageState extends State<NextPage> {
     return Container(
         height: 80,
         decoration: BoxDecoration(
-          color: Color.fromRGBO(255, 156, 157, 1), // background color
+          color: Color.fromRGBO(246, 169, 191, 01),
+
+          /// background color
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(6.0),
             bottomLeft: Radius.circular(6.0),
@@ -618,7 +620,7 @@ class _WelcomePageState extends State<NextPage> {
     return Container(
         height: 100,
         decoration: BoxDecoration(
-          color: Color.fromRGBO(255, 156, 157, 1),
+          color: Color.fromRGBO(246, 169, 191, 01), //
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(10.0),
             bottomLeft: Radius.circular(10.0),
