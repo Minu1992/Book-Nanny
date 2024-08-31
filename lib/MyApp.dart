@@ -114,7 +114,7 @@ class _WelcomePageState extends State<WelcomePage> {
 
   Widget Bottmnavbar() {
     return Positioned(
-      bottom: 20,
+      bottom: 20 * SizeConfig.blockSizeVertical,
       left: 0,
       right: 0,
       child: Container(
@@ -471,477 +471,454 @@ class _WelcomePageState extends State<WelcomePage> {
     // rgba(35, 186, 220, 1)
 
     return Container(
-      //height: MediaQuery.of(context).size.height * 0.5,
-      child: FutureBuilder<List<Package>>(
-        future: packagesFuture,
-        builder: (context, snapshot) {
-          print("minuminmuinmunu$snapshot");
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text('No packages available'));
-          }
-
-          final package = snapshot.data!;
-
-          print("fminuminuminmu  $package");
-
-          return Column(
-            children: [
-              Card(
-                margin: EdgeInsets.symmetric(vertical: 15, horizontal: 28),
-                elevation: 0,
-                color: cardcolor[0],
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 8, top: 3),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+        //height: MediaQuery.of(context).size.height * 0.5,
+        child: Column(
+      children: [
+        Card(
+          margin: EdgeInsets.symmetric(vertical: 15, horizontal: 28),
+          elevation: 0,
+          color: cardcolor[0],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Padding(
+            padding: EdgeInsets.only(left: 8, top: 3),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // First row: Calendar symbol and Start container
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Row(
                     children: [
-                      // First row: Calendar symbol and Start container
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Row(
-                          children: [
-                            Stack(
-                              alignment: Alignment
-                                  .center, // Aligns both the text and icon at the center
-                              children: [
-                                Icon(
-                                  Icons.calendar_today_outlined,
-                                  color: Color.fromARGB(209, 220, 65, 91),
-                                  size: 30 * SizeConfig.blockSizeVertical,
-                                ),
-                                Positioned(
-                                  top:
-                                      8, // Adjust this value to control the vertical position of "01"
-                                  child: Text(
-                                    "01",
-                                    style: TextStyle(
-                                      fontSize: 12 *
-                                          SizeConfig
-                                              .blockSizeVertical, // Adjust font size as needed
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: -0.8,
-                                      color: Color.fromARGB(209, 220, 65, 91),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ), // Calendar symbol
-                            SizedBox(width: 10),
-                            Spacer(),
-                            Container(
-                              //  padding: EdgeInsets.symmetric(vertical: 8),
-                              child: Container(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 9, vertical: 2.2),
-                                decoration: BoxDecoration(
-                                  color: Color.fromARGB(209, 220, 65, 91),
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                child: Text(
-                                  'Book Now',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white,
-                                      fontSize: 10),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      // Second row: Title and Price
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              package[0].title,
+                      Stack(
+                        alignment: Alignment
+                            .center, // Aligns both the text and icon at the center
+                        children: [
+                          Icon(
+                            Icons.calendar_today_outlined,
+                            color: Color.fromARGB(209, 220, 65, 91),
+                            size: 30 * SizeConfig.blockSizeVertical,
+                          ),
+                          Positioned(
+                            top:
+                                8, // Adjust this value to control the vertical position of "01"
+                            child: Text(
+                              "01",
                               style: TextStyle(
-                                  color: Color.fromRGBO(
-                                    9,
-                                    9,
-                                    56,
-                                    0.9,
-                                  ),
-                                  fontSize: 12,
-                                  letterSpacing: -0.2,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                            Text(
-                              '₹${package[0].price}',
-                              style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 12 *
+                                    SizeConfig
+                                        .blockSizeVertical, // Adjust font size as needed
                                 fontWeight: FontWeight.bold,
+                                letterSpacing: -0.8,
+                                color: Color.fromARGB(209, 220, 65, 91),
                               ),
-                            )
-                          ],
+                            ),
+                          ),
+                        ],
+                      ), // Calendar symbol
+                      SizedBox(width: 10),
+                      Spacer(),
+                      Container(
+                        //  padding: EdgeInsets.symmetric(vertical: 8),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 9, vertical: 2.2),
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(209, 220, 65, 91),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: Text(
+                            'Book Now',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                                fontSize: 10),
+                          ),
                         ),
                       ),
-                      //  SizedBox(height: 10 * SizeConfig.blockSizeVertical),
-                      // Third row: Details
-                      Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                        child: Text(
-                          package[0].desc + ' ' + package[0].desc,
-                          maxLines: 2,
-                          style: TextStyle(
-                              letterSpacing: -0.4,
-                              fontSize: 10 * SizeConfig.blockSizeVertical),
-                        ),
-                      ),
-                      //SizedBox(height: 5 * SizeConfig.blockSizeVertical),
                     ],
                   ),
                 ),
-              ),
-              Card(
-                margin: EdgeInsets.symmetric(vertical: 0, horizontal: 28),
-                elevation: 0,
-                color: cardcolor[1],
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 8, top: 3),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                // Second row: Title and Price
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // First row: Calendar symbol and Start container
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Row(
-                          children: [
-                            Stack(
-                              alignment: Alignment
-                                  .center, // Aligns both the text and icon at the center
-                              children: [
-                                Icon(
-                                  Icons.calendar_today_outlined,
-                                  color: Colors.white.withAlpha(190),
-                                  size: 30 * SizeConfig.blockSizeVertical,
-                                ),
-                                Positioned(
-                                  top:
-                                      8, // Adjust this value to control the vertical position of "01"
-                                  child: Text(
-                                    "03",
-                                    style: TextStyle(
-                                      fontSize: 12 *
-                                          SizeConfig
-                                              .blockSizeVertical, // Adjust font size as needed
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: -0.8,
-                                      color: Colors.white.withAlpha(190),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ), // Calen/ Calendar symbol
-                            SizedBox(width: 10),
-                            Spacer(),
-                            Container(
-                              //  padding: EdgeInsets.symmetric(vertical: 8),
-                              child: Container(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 9, vertical: 2.2),
-                                decoration: BoxDecoration(
-                                  color: buttonclr[3],
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                child: Text(
-                                  'Book Now',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white,
-                                      fontSize: 10),
-                                ),
-                              ),
+                      Text(
+                        'One Day Package',
+                        style: TextStyle(
+                            color: Color.fromRGBO(
+                              9,
+                              9,
+                              56,
+                              0.9,
                             ),
-                          ],
-                        ),
+                            fontSize: 12,
+                            letterSpacing: -0.2,
+                            fontWeight: FontWeight.w600),
                       ),
-                      // Second row: Title and Price
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              package[1].title,
-                              style: TextStyle(
-                                  color: Color.fromRGBO(
-                                    9,
-                                    9,
-                                    56,
-                                    0.9,
-                                  ),
-                                  fontSize: 12,
-                                  letterSpacing: -0.2,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                            Text(
-                              '₹${package[1].price}',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )
-                          ],
+                      Text(
+                        '₹2799}',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
                         ),
-                      ),
-                      //  SizedBox(height: 10 * SizeConfig.blockSizeVertical),
-                      // Third row: Details
-                      Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                        child: Text(
-                          package[1].desc + ' ' + package[1].desc,
-                          maxLines: 2,
-                          style: TextStyle(
-                              letterSpacing: -0.4,
-                              fontSize: 10 * SizeConfig.blockSizeVertical),
-                        ),
-                      ),
-                      SizedBox(height: 10 * SizeConfig.blockSizeVertical),
+                      )
                     ],
                   ),
                 ),
-              ),
-              Card(
-                margin: EdgeInsets.symmetric(vertical: 15, horizontal: 28),
-                elevation: 0,
-                color: cardcolor[2],
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+                //  SizedBox(height: 10 * SizeConfig.blockSizeVertical),
+                // Third row: Details
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                  child: Text(
+                    'Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+                    maxLines: 2,
+                    style: TextStyle(
+                        letterSpacing: -0.4,
+                        fontSize: 10 * SizeConfig.blockSizeVertical),
+                  ),
                 ),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 8, top: 3),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                //SizedBox(height: 5 * SizeConfig.blockSizeVertical),
+              ],
+            ),
+          ),
+        ),
+        Card(
+          margin: EdgeInsets.symmetric(vertical: 0, horizontal: 28),
+          elevation: 0,
+          color: cardcolor[1],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Padding(
+            padding: EdgeInsets.only(left: 8, top: 3),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // First row: Calendar symbol and Start container
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Row(
                     children: [
-                      // First row: Calendar symbol and Start container
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Row(
-                          children: [
-                            Stack(
-                              alignment: Alignment
-                                  .center, // Aligns both the text and icon at the center
-                              children: [
-                                Icon(
-                                  Icons.calendar_today_outlined,
-                                  color: Color.fromARGB(209, 220, 65, 91),
-                                  size: 30 * SizeConfig.blockSizeVertical,
-                                ),
-                                Positioned(
-                                  top:
-                                      8, // Adjust this value to control the vertical position of "01"
-                                  child: Text(
-                                    "05",
-                                    style: TextStyle(
-                                      letterSpacing: -0.8,
-                                      fontSize: 12 *
-                                          SizeConfig
-                                              .blockSizeVertical, // Adjust font size as needed
-                                      fontWeight: FontWeight.bold,
-                                      color: Color.fromARGB(209, 220, 65, 91),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ), // Calen/ Calendar symbol
-                            SizedBox(width: 10),
-                            Spacer(),
-                            Container(
-                              //  padding: EdgeInsets.symmetric(vertical: 8),
-                              child: Container(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 9, vertical: 2.2),
-                                decoration: BoxDecoration(
-                                  color: Color.fromARGB(209, 220, 65, 91),
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                child: Text(
-                                  'Book Now',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white,
-                                      fontSize: 10),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      // Second row: Title and Price
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              package[2].title,
+                      Stack(
+                        alignment: Alignment
+                            .center, // Aligns both the text and icon at the center
+                        children: [
+                          Icon(
+                            Icons.calendar_today_outlined,
+                            color: Colors.white.withAlpha(190),
+                            size: 30 * SizeConfig.blockSizeVertical,
+                          ),
+                          Positioned(
+                            top:
+                                8, // Adjust this value to control the vertical position of "01"
+                            child: Text(
+                              "03",
                               style: TextStyle(
-                                  color: Color.fromRGBO(
-                                    9,
-                                    9,
-                                    56,
-                                    0.9,
-                                  ),
-                                  fontSize: 12,
-                                  letterSpacing: -0.2,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                            Text(
-                              '₹${package[2].price}',
-                              style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 12 *
+                                    SizeConfig
+                                        .blockSizeVertical, // Adjust font size as needed
                                 fontWeight: FontWeight.bold,
+                                letterSpacing: -0.8,
+                                color: Colors.white.withAlpha(190),
                               ),
-                            )
-                          ],
+                            ),
+                          ),
+                        ],
+                      ), // Calen/ Calendar symbol
+                      SizedBox(width: 10),
+                      Spacer(),
+                      Container(
+                        //  padding: EdgeInsets.symmetric(vertical: 8),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 9, vertical: 2.2),
+                          decoration: BoxDecoration(
+                            color: buttonclr[3],
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: Text(
+                            'Book Now',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                                fontSize: 10),
+                          ),
                         ),
                       ),
-                      //  SizedBox(height: 10 * SizeConfig.blockSizeVertical),
-                      // Third row: Details
-                      Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                        child: Text(
-                          package[2].desc + ' ' + package[2].desc,
-                          maxLines: 2,
-                          style: TextStyle(
-                              letterSpacing: -0.4,
-                              fontSize: 10 * SizeConfig.blockSizeVertical),
-                        ),
-                      ),
-                      SizedBox(height: 10 * SizeConfig.blockSizeVertical),
                     ],
                   ),
                 ),
-              ),
-              Card(
-                margin: EdgeInsets.symmetric(vertical: 0, horizontal: 28),
-                elevation: 0,
-                color: cardcolor[3],
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 8, top: 3),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                // Second row: Title and Price
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // First row: Calendar symbol and Start container
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Row(
-                          children: [
-                            Stack(
-                              alignment: Alignment
-                                  .center, // Aligns both the text and icon at the center
-                              children: [
-                                Icon(
-                                  Icons.calendar_today_outlined,
-                                  color: Colors.white.withAlpha(190),
-                                  size: 30 * SizeConfig.blockSizeVertical,
-                                ),
-                                Positioned(
-                                  top:
-                                      12, // Adjust this value to control the vertical position of "01"
-                                  child: Icon(
-                                    Icons.wb_sunny_outlined,
-                                    color: Colors.white.withAlpha(190),
-                                    size: 11 * SizeConfig.blockSizeVertical,
-                                  ),
-                                ),
-                              ],
-                            ), // // Calendar symbol
-                            SizedBox(width: 10),
-                            Spacer(),
-                            Container(
-                              //  padding: EdgeInsets.symmetric(vertical: 8),
-                              child: Container(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 9, vertical: 2.2),
-                                decoration: BoxDecoration(
-                                  color: buttonclr[1],
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                child: Text(
-                                  'Book Now',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white,
-                                      fontSize: 10),
-                                ),
-                              ),
+                      Text(
+                        'Three Day Package',
+                        style: TextStyle(
+                            color: Color.fromRGBO(
+                              9,
+                              9,
+                              56,
+                              0.9,
                             ),
-                          ],
-                        ),
+                            fontSize: 12,
+                            letterSpacing: -0.2,
+                            fontWeight: FontWeight.w700),
                       ),
-                      // Second row: Title and Price
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              package[3].title,
+                      Text(
+                        '₹7497',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                //  SizedBox(height: 10 * SizeConfig.blockSizeVertical),
+                // Third row: Details
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                  child: Text(
+                    'Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+                    maxLines: 2,
+                    style: TextStyle(
+                        letterSpacing: -0.4,
+                        fontSize: 10 * SizeConfig.blockSizeVertical),
+                  ),
+                ),
+                SizedBox(height: 10 * SizeConfig.blockSizeVertical),
+              ],
+            ),
+          ),
+        ),
+        Card(
+          margin: EdgeInsets.symmetric(vertical: 15, horizontal: 28),
+          elevation: 0,
+          color: cardcolor[2],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Padding(
+            padding: EdgeInsets.only(left: 8, top: 3),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // First row: Calendar symbol and Start container
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Row(
+                    children: [
+                      Stack(
+                        alignment: Alignment
+                            .center, // Aligns both the text and icon at the center
+                        children: [
+                          Icon(
+                            Icons.calendar_today_outlined,
+                            color: Color.fromARGB(209, 220, 65, 91),
+                            size: 30 * SizeConfig.blockSizeVertical,
+                          ),
+                          Positioned(
+                            top:
+                                8, // Adjust this value to control the vertical position of "01"
+                            child: Text(
+                              "05",
                               style: TextStyle(
-                                  color: Color.fromRGBO(
-                                    9,
-                                    9,
-                                    56,
-                                    0.9,
-                                  ),
-                                  fontSize: 12,
-                                  letterSpacing: -0.2,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                            Text(
-                              '₹${package[3].price}',
-                              style: TextStyle(
-                                fontSize: 12,
+                                letterSpacing: -0.8,
+                                fontSize: 12 *
+                                    SizeConfig
+                                        .blockSizeVertical, // Adjust font size as needed
                                 fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(209, 220, 65, 91),
                               ),
-                            )
-                          ],
+                            ),
+                          ),
+                        ],
+                      ), // Calen/ Calendar symbol
+                      SizedBox(width: 10),
+                      Spacer(),
+                      Container(
+                        //  padding: EdgeInsets.symmetric(vertical: 8),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 9, vertical: 2.2),
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(209, 220, 65, 91),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: Text(
+                            'Book Now',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                                fontSize: 10),
+                          ),
                         ),
                       ),
-                      //  SizedBox(height: 10 * SizeConfig.blockSizeVertical),
-                      // Third row: Details
-                      Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                        child: Text(
-                          package[3].desc + ' ' + package[3].desc,
-                          maxLines: 2,
-                          style: TextStyle(
-                              letterSpacing: -0.4,
+                    ],
+                  ),
+                ),
+                // Second row: Title and Price
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Five Day Package',
+                        style: TextStyle(
+                            color: Color.fromRGBO(
+                              9,
+                              9,
+                              56,
+                              0.9,
+                            ),
+                            fontSize: 12,
+                            letterSpacing: -0.2,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      Text(
+                        '₹11495',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                //  SizedBox(height: 10 * SizeConfig.blockSizeVertical),
+                // Third row: Details
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                  child: Text(
+                    'Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+                    maxLines: 2,
+                    style: TextStyle(
+                        letterSpacing: -0.4,
+                        fontSize: 10 * SizeConfig.blockSizeVertical),
+                  ),
+                ),
+                SizedBox(height: 10 * SizeConfig.blockSizeVertical),
+              ],
+            ),
+          ),
+        ),
+        Card(
+          margin: EdgeInsets.symmetric(vertical: 0, horizontal: 28),
+          elevation: 0,
+          color: cardcolor[3],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Padding(
+            padding: EdgeInsets.only(left: 8, top: 3),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // First row: Calendar symbol and Start container
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Row(
+                    children: [
+                      Stack(
+                        alignment: Alignment
+                            .center, // Aligns both the text and icon at the center
+                        children: [
+                          Icon(
+                            Icons.calendar_today_outlined,
+                            color: Colors.white.withAlpha(190),
+                            size: 30 * SizeConfig.blockSizeVertical,
+                          ),
+                          Positioned(
+                            top:
+                                12, // Adjust this value to control the vertical position of "01"
+                            child: Icon(
+                              Icons.wb_sunny_outlined,
                               color: Colors.white.withAlpha(190),
-                              fontSize: 10 * SizeConfig.blockSizeVertical),
+                              size: 11 * SizeConfig.blockSizeVertical,
+                            ),
+                          ),
+                        ],
+                      ), // // Calendar symbol
+                      SizedBox(width: 10),
+                      Spacer(),
+                      Container(
+                        //  padding: EdgeInsets.symmetric(vertical: 8),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 9, vertical: 2.2),
+                          decoration: BoxDecoration(
+                            color: buttonclr[1],
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: Text(
+                            'Book Now',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                                fontSize: 10),
+                          ),
                         ),
                       ),
-                      SizedBox(height: 10 * SizeConfig.blockSizeVertical),
                     ],
                   ),
                 ),
-              ),
-            ],
-          );
-        },
-      ),
-    );
+                // Second row: Title and Price
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Weekend Day Package',
+                        style: TextStyle(
+                            color: Color.fromRGBO(
+                              9,
+                              9,
+                              56,
+                              0.9,
+                            ),
+                            fontSize: 12,
+                            letterSpacing: -0.2,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      Text(
+                        '₹7497',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                //  SizedBox(height: 10 * SizeConfig.blockSizeVertical),
+                // Third row: Details
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                  child: Text(
+                    'Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+                    maxLines: 2,
+                    style: TextStyle(
+                        letterSpacing: -0.4,
+                        color: Colors.white.withAlpha(190),
+                        fontSize: 10 * SizeConfig.blockSizeVertical),
+                  ),
+                ),
+                SizedBox(height: 10 * SizeConfig.blockSizeVertical),
+              ],
+            ),
+          ),
+        ),
+      ],
+    ));
   }
 
   // color: Color.fromARGB(255, 244, 166, 179),
